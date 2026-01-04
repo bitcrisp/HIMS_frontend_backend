@@ -1,0 +1,114 @@
+<div class="container">
+  <form [formGroup]="PatientObj.formPatientGroup">
+    <!-- SUCCESS MESSAGE -->
+    <div *ngIf="successMessage" class="success-msg">{{ successMessage }}</div>
+
+    <!-- FORM ERROR -->
+    <div *ngIf="formErrorMessage" class="error-msg">{{ formErrorMessage }}</div>
+
+    <!-- NAME -->
+    <div class="field-block">
+      <label>Patient Name</label><br />
+      <input type="text" formControlName="CustomerNameControl" />
+
+      <div
+        class="error-msg"
+        *ngIf="PatientObj.formPatientGroup.get('CustomerNameControl')?.invalid"
+      >
+        Name is required
+      </div>
+    </div>
+
+    <!-- CODE -->
+    <div class="field-block">
+      <label>Patient Code</label><br />
+      <input type="text" formControlName="CustomerCodeControl" />
+
+      <div
+        class="error-msg"
+        *ngIf="PatientObj.formPatientGroup.get('CustomerCodeControl')?.invalid"
+      >
+        Code must be in format PAT1001
+      </div>
+    </div>
+
+    <!-- AMOUNT -->
+    <div class="field-block">
+      <label>Amount</label><br />
+      <input type="number" formControlName="CustomerAmountControl" />
+
+      <div
+        class="error-msg"
+        *ngIf="PatientObj.formPatientGroup.get('CustomerAmountControl')?.invalid"
+      >
+        Amount must be greater then 0
+      </div>
+    </div>
+
+    <!-- ADDRESS -->
+    <div class="address-block">
+      <label>Address</label><br />
+      <input
+        type="text"
+        formControlName="CustomerAddressControl"
+        class="address-input"
+      />
+
+      <button type="button" class="btn" (click)="AddAddress()">
+        Add Address
+      </button>
+
+      <div *ngIf="addressErrorMessage" class="error-msg">
+        {{ addressErrorMessage }}
+      </div>
+    </div>
+
+    <!-- ADDRESS LIST (VISIBLE DURING ADD + EDIT) -->
+    <ul class="address-list">
+      <li *ngFor="let a of PatientObj.Addresses">{{ a.street1 }}</li>
+    </ul>
+
+    <!-- ADD / UPDATE -->
+    <div class="action-block">
+      <button
+        type="button"
+        class="btn"
+        (click)="isEditMode ? UpdatePatient() : AddPatient()"
+      >
+        {{ isEditMode ? 'Update Patient' : 'Add Patient' }}
+      </button>
+    </div>
+  </form>
+
+  <hr class="divider" />
+
+  <!-- TABLE -->
+  <table class="patient-table">
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Amount</th>
+      <th>Addresses</th>
+      <th>Action</th>
+    </tr>
+
+    <tr *ngFor="let p of PatientObjs">
+      <td>{{ p.name }}</td>
+      <td>{{ p.code }}</td>
+      <td>{{ p.amount }}</td>
+      <td>
+        <div *ngFor="let a of (p.addresses || p.Addresses)">
+          {{ a.street1 }}
+        </div>
+      </td>
+      <td>
+        <button class="btn" (click)="EditPatient(p)">Edit</button>
+      </td>
+    </tr>
+  </table>
+
+  <!-- LOAD BUTTON AT BOTTOM -->
+  <div class="action-block">
+    <button class="btn" (click)="getDBdata()">Load Patients</button>
+  </div>
+</div>

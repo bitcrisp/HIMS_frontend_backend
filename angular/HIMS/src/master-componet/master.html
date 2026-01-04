@@ -1,0 +1,22 @@
+<nav style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; background:#f5f5f5; border-bottom:1px solid #ccc;">
+  <h1 style="margin:0; font-size:18px;">HIMS</h1>
+
+  <div>
+    <a routerLink="/welcome" style="margin-right:12px; text-decoration:none; color:#333;">
+      Welcome
+    </a>
+    <a routerLink="/patient" style="text-decoration:none; color:#333;">
+      Patient
+    </a>
+  </div>
+</nav>
+
+<div style="padding:16px; min-height:300px;">
+  <router-outlet></router-outlet>
+</div>
+
+<hr style="border:none; border-top:1px solid #ccc; margin:0;">
+
+<footer style="text-align:center; padding:10px; background:#f5f5f5;">
+  <h3 style="margin:0; font-size:14px;">Footer</h3>
+</footer>

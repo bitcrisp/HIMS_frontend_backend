@@ -1,0 +1,87 @@
+.container {
+  padding: 16px;
+  max-width: 600px;
+  font-family: Arial, sans-serif;
+}
+
+/* Success message */
+.success-msg {
+  color: green;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Field blocks */
+.field-block {
+  margin-bottom: 14px;
+}
+
+label {
+  font-weight: normal;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+/* Error messages */
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.address-error {
+  margin-top: 6px;
+}
+
+/* Address section */
+.address-block {
+  margin-bottom: 10px;
+}
+
+.address-input {
+  width: 70%;
+  padding: 6px;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 10px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* Address list */
+.address-list {
+  padding-left: 18px;
+  margin-top: 6px;
+}
+
+/* Action buttons */
+.action-block {
+  margin-top: 14px;
+}
+
+/* Divider */
+.divider {
+  margin: 20px 0;
+}
+
+/* Table */
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.patient-table th,
+.patient-table td {
+  border: 1px solid #000;
+  padding: 6px;
+}
+
+.patient-table th {
+  background: #f2f2f2;
+}
