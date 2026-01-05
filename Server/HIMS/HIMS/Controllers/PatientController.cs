@@ -9,6 +9,27 @@ namespace HIMS.Controllers
     [Route("Patient")]
     public class PatientController : ControllerBase
     {
+        // store the patient data 
+        [HttpPost("Add")]
+        public IActionResult Add([FromBody]List<Patinet> pats)
+        {
+            if(pats != null && pats.Count != 0)
+            {
+                foreach (var pat in pats)
+                {
+                    PatientRepository p = new PatientRepository();
+                    p.Add(pat);
+                    p.SaveChanges();
+                }
+            
+                return Ok(pats);
+
+
+            }
+            return BadRequest("No Data Provides!!");
+
+        }
+        // get the stored patient data from DB
         [HttpGet("Load")]
         public IActionResult Load()
         {
@@ -19,7 +40,7 @@ namespace HIMS.Controllers
             return Ok(data);
         }
 
-        // 🔹 UPDATE PATIENT
+        // update existing Patient
         [HttpPut("Update")]
         public IActionResult Update([FromBody] Patinet pat)
         {

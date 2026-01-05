@@ -113,10 +113,21 @@ export class PetientRegistation implements OnInit {
     newPatient.Addresses = [...this.PatientObj.Addresses];
     newPatient.formPatientGroup = null as any;
 
-    this.PatientObjs.push(newPatient);
+    this.http.post('https://localhost:7168/Patient/Add' , [newPatient])
+    .subscribe({
+      next: ()=>{
+        this.successMessage = 'Patient Saved Successfully !!!';
+        this.PatientObj = new Patient();
+        this.addressErrorMessage = 'At least one address is required';
+      },
+      error : ()=>{
+        this.formErrorMessage = 'Failed to save Patient'
+      }
+    })
 
-    this.PatientObj = new Patient();
-    this.addressErrorMessage = 'At least one address is required';
+    
+    // this.PatientObjs.push(newPatient);
+
   }
 
   // ---------------- UPDATE ----------------
